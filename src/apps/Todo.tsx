@@ -44,6 +44,7 @@ export const Todo = () => {
 			<form onSubmit={handleSubmit}>
 				<input
 					type='text'
+					data-test='new-todo'
 					placeholder='What do we need to do?'
 					ref={newTodoInputRef}
 				/>
@@ -57,6 +58,7 @@ export const Todo = () => {
 							<input
 								type='checkbox'
 								checked={todo.done}
+								value={todo.done ? `todo-done` : `todo-not-done`}
 								onChange={() => handleDoneTodo(todo.label)}
 							/>
 							{todo.label}
