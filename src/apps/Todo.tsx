@@ -2,9 +2,9 @@ import React, { useRef, useState } from 'react'
 
 export const Todo = () => {
 	const newTodoInputRef = useRef<HTMLInputElement>(null)
-	const [todos, setTodos] = useState<Array<{ label: string; done: boolean }>>(
-		[]
-	)
+	const [todos, setTodos] = useState<Array<{ label: string; done: boolean }>>([
+		{ label: 'Brush teeth', done: true },
+	])
 
 	const handleSubmit = (event: React.FormEvent) => {
 		event.preventDefault()
@@ -53,10 +53,11 @@ export const Todo = () => {
 				<ul>
 					{todos.length === 0 && <span>Nothing to do</span>}
 					{todos.map((todo) => (
-						<li key={todo.label}>
+						<li key={todo.label} data-test='todo'>
 							<input
 								type='checkbox'
-								onClick={() => handleDoneTodo(todo.label)}
+								checked={todo.done}
+								onChange={() => handleDoneTodo(todo.label)}
 							/>
 							{todo.label}
 						</li>
